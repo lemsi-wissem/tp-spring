@@ -20,7 +20,7 @@ public class Voiture {
     private List<Location> locations;
 
     @ManyToOne
-    private Model model;
+    private Models models;
 
     public Long getId() {
         return id;
@@ -54,11 +54,11 @@ public class Voiture {
         this.locations = locations;
     }
 
-    public Model getModel() {
-        return model;
+    public Models getModel() {
+        return models;
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setModel(Models models) {
+        this.models = models;
     }
 }
