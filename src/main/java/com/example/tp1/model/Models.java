@@ -11,7 +11,7 @@ public class Models {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "model")
+    @OneToMany(mappedBy = "models")
     private List<Voiture> voitures;
 
     private String nom;

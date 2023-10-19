@@ -26,7 +26,7 @@ public class ModelController {
         return "new_model";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/model/save")
     public String saveModel(@ModelAttribute("modelForm") Models model1) {
         modelService.saveModel(model1);
         return "redirect:/";

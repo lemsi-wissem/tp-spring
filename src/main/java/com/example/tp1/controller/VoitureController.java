@@ -25,7 +25,7 @@ public class VoitureController {
         return "new_voiture";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/voiture/save")
     public String saveVoiture(@ModelAttribute("voitureForm") Voiture voiture) {
         voitureService.saveVoiture(voiture);
         return "redirect:/";

@@ -26,7 +26,7 @@ public class LocationController {
         return "new_location";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/location/save")
     public String saveLocation(@ModelAttribute("locationForm") Location location) {
         locationService.saveLocation(location);
         return "redirect:/";
