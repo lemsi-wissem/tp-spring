@@ -28,6 +28,25 @@ public class ClientController {
     @PostMapping("/client/save")
     public String saveClient(@ModelAttribute("clientForm") Client client) {
         clientService.saveClient(client);
-        return "redirect:/";
+        return "redirect:/clients/all";
+    }
+
+    @GetMapping("/clients/all")
+    public String getAllClients(Model model) {
+        model.addAttribute("clients", clientService.getAllClients());
+        return "clients_list";
+    }
+
+    @GetMapping("/client/update/{id}")
+    public String updateClient(@PathVariable(value = "id") Long id, Model model) {
+        Client client = clientService.getClientById(id);
+        model.addAttribute("clientForm", client);
+        return "update_client";
+    }
+
+    @GetMapping("/client/delete/{id}")
+    public String deleteClient(@PathVariable(value = "id") Long id) {
+        clientService.deleteClientById(id);
+        return "redirect:/clients/all";
     }
 }
