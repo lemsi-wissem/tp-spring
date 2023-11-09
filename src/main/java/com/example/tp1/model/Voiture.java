@@ -1,9 +1,13 @@
 package com.example.tp1.model;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import static jakarta.persistence.TemporalType.DATE;
 
 @Entity
 public class Voiture {
@@ -14,7 +18,8 @@ public class Voiture {
 
     private String serie;
 
-    private Date dateMiseEnMarche;
+    @DateTimeFormat(pattern="YYYY-MM-DD")
+    private LocalDate dateMiseEnMarche;
 
     @OneToMany(mappedBy = "voiture")
     private List<Location> locations;
@@ -38,11 +43,11 @@ public class Voiture {
         this.serie = serie;
     }
 
-    public Date getDateMiseEnMarche() {
+    public LocalDate getDateMiseEnMarche() {
         return dateMiseEnMarche;
     }
 
-    public void setDateMiseEnMarche(Date dateMiseEnMarche) {
+    public void setDateMiseEnMarche(LocalDate dateMiseEnMarche) {
         this.dateMiseEnMarche = dateMiseEnMarche;
     }
 
@@ -54,11 +59,11 @@ public class Voiture {
         this.locations = locations;
     }
 
-    public Models getModel() {
+    public Models getModels() {
         return models;
     }
 
-    public void setModel(Models models) {
+    public void setModels(Models models) {
         this.models = models;
     }
 }
