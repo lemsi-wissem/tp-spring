@@ -1,7 +1,9 @@
 package com.example.tp1.model;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -11,9 +13,13 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date dateDebut;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="DD-MM-YYYY")
+    private LocalDate dateDebut;
 
-    private Date dateRetour;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="DD-MM-YYYY")
+    private LocalDate dateRetour;
 
     private Double prixJour;
 
@@ -33,19 +39,19 @@ public class Location {
         this.id = id;
     }
 
-    public Date getDateDebut() {
+    public LocalDate getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(LocalDate dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateRetour() {
+    public LocalDate getDateRetour() {
         return dateRetour;
     }
 
-    public void setDateRetour(Date dateRetour) {
+    public void setDateRetour(LocalDate dateRetour) {
         this.dateRetour = dateRetour;
     }
 
@@ -62,7 +68,7 @@ public class Location {
     }
 
     public void setPrix(Double prix) {
-        this.prix = prix;
+        this.prix = prix * (dateRetour.getDayOfYear() - dateDebut.getDayOfYear());
     }
 
     public Client getClient() {

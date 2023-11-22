@@ -4,10 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-
-import static jakarta.persistence.TemporalType.DATE;
 
 @Entity
 public class Voiture {
@@ -17,8 +14,8 @@ public class Voiture {
     private Long id;
 
     private String serie;
-
-    @DateTimeFormat(pattern="YYYY-MM-DD")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="DD-MM-YYYY")
     private LocalDate dateMiseEnMarche;
 
     @OneToMany(mappedBy = "voiture")

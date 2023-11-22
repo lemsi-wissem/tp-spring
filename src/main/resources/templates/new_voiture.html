@@ -24,12 +24,12 @@
                         </div>
                         <div class="form-group col-md-8">
                             <label for="dateMiseEnMarche">Date de Mise en Marche:</label>
-                            <input type="date" pattern="YYYY-MM-DD" id="dateMiseEnMarche" th:field="*{dateMiseEnMarche}" />
+                            <input type="date" id="dateMiseEnMarche" th:field="*{dateMiseEnMarche}" />
                         </div>
 
                         <div class="form-group col-md-8">
                             <label for="model">Select Model:</label>
-                            <select class="form-control" id="model" name="model" th:field="*{models}" required>
+                            <select class="form-control" id="model" name="model" th:field="*{models.id}" required>
                                 <option th:each="model : ${models}" th:value="${model.id}" th:text="${model.nom}"></option>
                             </select>
                         </div>
