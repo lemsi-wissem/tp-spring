@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @Entity
@@ -39,21 +40,6 @@ public class Location {
         this.id = id;
     }
 
-    public LocalDate getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(LocalDate dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public LocalDate getDateRetour() {
-        return dateRetour;
-    }
-
-    public void setDateRetour(LocalDate dateRetour) {
-        this.dateRetour = dateRetour;
-    }
 
     public Double getPrixJour() {
         return prixJour;
@@ -68,7 +54,7 @@ public class Location {
     }
 
     public void setPrix(Double prix) {
-        this.prix = prix * (dateRetour.getDayOfYear() - dateDebut.getDayOfYear());
+        this.prix = prix;
     }
 
     public Client getClient() {
@@ -85,5 +71,21 @@ public class Location {
 
     public void setVoiture(Voiture voiture) {
         this.voiture = voiture;
+    }
+
+    public LocalDate getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(LocalDate dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public LocalDate getDateRetour() {
+        return dateRetour;
+    }
+
+    public void setDateRetour(LocalDate dateRetour) {
+        this.dateRetour = dateRetour;
     }
 }

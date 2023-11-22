@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -52,5 +53,22 @@ public class LocationController {
     public String listLocation(Model model) {
         model.addAttribute("locations", locationService.getAllLocations());
         return "location_list";
+    }
+
+    @RequestMapping("/location/update/{id}")
+    public String updateLocation(@PathVariable(value="id") Long id, Model model){
+        Location location = locationService.getLocationById(id);
+        model.addAttribute("locationForm", location);
+        List<Client> clients = clientService.getAllClients();
+        model.addAttribute("clients", clients);
+        List<Voiture> voitures = voitureService.getAllVoitures();
+        model.addAttribute("voitures", voitures);
+        return "update_location";
+    }
+
+    @RequestMapping("/location/delete/{id}")
+    public String deleteLocation(@PathVariable("id") Long id, Model model) {
+        locationService.deleteLocation(id);
+        return "redirect:/locations/all";
     }
 }
