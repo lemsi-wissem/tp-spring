@@ -30,4 +30,15 @@ public class ModelService {
     public void deleteModel(Long id) {
         modelRepository.deleteById(id);
     }
+
+    public Models updateModel(Models model) {
+        Models existingModel = modelRepository.findById(model.getId()).orElse(null);
+        if (existingModel == null) {
+            return null;
+        }
+        existingModel.setId(model.getId());
+        existingModel.setNom(model.getNom());
+        existingModel.setVoitures(model.getVoitures());
+        return modelRepository.save(existingModel);
+    }
 }

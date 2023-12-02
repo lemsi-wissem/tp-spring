@@ -36,4 +36,17 @@ public class VoitureService {
     public List<Voiture> getAllVoitures() {
         return voitureRepository.findAll();
     }
+
+    public Voiture updateVoiture(Voiture voiture) {
+        Voiture existingVoiture = voitureRepository.findById(voiture.getId()).orElse(null);
+        if (existingVoiture == null) {
+            return null;
+        }
+        existingVoiture.setId(voiture.getId());
+        existingVoiture.setLocations(voiture.getLocations());
+        existingVoiture.setSerie(voiture.getSerie());
+        existingVoiture.setModels(voiture.getModels());
+        existingVoiture.setDateMiseEnMarche(voiture.getDateMiseEnMarche());
+        return voitureRepository.save(existingVoiture);
+    }
 }

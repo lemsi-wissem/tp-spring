@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 @RestController
 public class AjaxController {
     @PostMapping("/calculatePrice")
-    public double calculatePrice(@RequestParam("dateDebut") LocalDate dateDebut,
+    public Double calculatePrice(@RequestParam("dateDebut") LocalDate dateDebut,
                                  @RequestParam("dateRetour") LocalDate dateRetour,
                                  @RequestParam("prixJour") double prixJour) {
         // Parse the dates and calculate the price

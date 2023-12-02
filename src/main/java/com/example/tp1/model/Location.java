@@ -15,11 +15,11 @@ public class Location {
     private Long id;
 
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern="DD-MM-YYYY")
+    @DateTimeFormat(pattern="mm/dd/yyyy")
     private LocalDate dateDebut;
 
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern="DD-MM-YYYY")
+    @DateTimeFormat(pattern="mm/dd/yyyy")
     private LocalDate dateRetour;
 
     private Double prixJour;

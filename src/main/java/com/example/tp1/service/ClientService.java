@@ -30,15 +30,15 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
-    public void deleteClient(Long id) {
-        clientRepository.deleteById(id);
-    }
-
     public List<Client> getAllClients() {
         return clientRepository.findAll();
     }
 
     public void deleteClientById(Long id) {
         clientRepository.deleteById(id);
+    }
+
+    public Client updateClient(Client client) {
+        return clientRepository.save(client);
     }
 }

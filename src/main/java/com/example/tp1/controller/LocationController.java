@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Controller
@@ -45,6 +46,7 @@ public class LocationController {
 
     @PostMapping("/location/save")
     public String saveLocation(@ModelAttribute("locationForm") Location location) {
+        location.setPrix(location.getPrixJour() * (ChronoUnit.DAYS.between(location.getDateDebut(), location.getDateRetour())));
         locationService.saveLocation(location);
         return "redirect:/locations/all";
     }

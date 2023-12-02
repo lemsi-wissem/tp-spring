@@ -42,4 +42,19 @@ public class LocationService {
     public List<Location> getAllLocations() {
         return locationRepository.findAll();
     }
+
+    public Location updateLocation(Location location) {
+        Location existingLocation = locationRepository.findById(location.getId()).orElse(null);
+        if (existingLocation == null) {
+            return null;
+        }
+        existingLocation.setId(location.getId());
+        existingLocation.setClient(location.getClient());
+        existingLocation.setVoiture(location.getVoiture());
+        existingLocation.setDateDebut(location.getDateDebut());
+        existingLocation.setPrix(location.getPrix());
+        existingLocation.setDateRetour(location.getDateRetour());
+        existingLocation.setPrixJour(location.getPrixJour());
+        return locationRepository.save(existingLocation);
+    }
 }
