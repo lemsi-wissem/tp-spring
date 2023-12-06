@@ -1,5 +1,7 @@
 package com.example.tp1.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,6 +24,7 @@ public class Voiture {
     private List<Location> locations;
 
     @ManyToOne
+    @JoinColumn(name = "models_id", nullable = false)
     private Models models;
 
     public Long getId() {

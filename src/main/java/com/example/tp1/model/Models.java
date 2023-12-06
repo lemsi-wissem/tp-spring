@@ -1,5 +1,7 @@
 package com.example.tp1.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,7 +13,8 @@ public class Models {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "models")
+    @OneToMany(mappedBy = "models",fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("models")
     private List<Voiture> voitures;
 
     private String nom;
